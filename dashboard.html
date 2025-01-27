@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saturn360 Profile</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .top-banner {
+            background-image: url('https://i.ibb.co/D4MMfj8/images.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 0 15px;  
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            height: 50px;  
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .banner-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;  
+        }
+
+        .menu-icon {
+            cursor: pointer;
+            width: 24px;  
+            height: 24px;
+        }
+
+        .logo {
+            height: 30px;  
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .banner-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;  
+        }
+
+        .price-icon {
+            width: 24px;  
+            height: 24px;
+            cursor: pointer;
+            margin-right: 5px;  
+        }
+
+        .notification-icon, .chat-icon {
+            width: 24px;  
+            height: 24px;
+            cursor: pointer;
+            margin-right: 5px;  
+        }
+
+        .profile-pic {
+            width: 30px;  
+            height: 30px;
+            border-radius: 50%;
+            background: #4a5b6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-left: 15px;  
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-container {
+            padding: 15px;
+            padding-top: 65px;
+            background-color: white;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            flex-grow: 1;
+            border: none;
+            background: transparent;
+            margin-left: 10px;
+            font-size: 16px;
+        }
+
+        .search-bar svg {
+            width: 20px;
+            height: 20px;
+            color: #888;
+        }
+
+        .credits-section {
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .credits-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .credits-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .credits-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .credits-icon {
+            width: 24px;
+            height: 24px;
+            fill: #007bff;
+        }
+
+        .credits-amount {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .credits-action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .credits-description {
+            font-size: 12px;
+            color: #777;
+            flex-grow: 1;
+            margin-right: 15px;
+        }
+
+        .credits-buy-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .credits-buy-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .profile-header {
+            background: linear-gradient(to right, #3a4b5c, #2c3e50);
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .profile-header-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #4a5b6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            overflow: hidden;
+        }
+
+        .profile-header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-header-details {
+            flex-grow: 1;
+　　 　　}
+
+        .profile-header-name {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .profile-header-plan {
+            color: #b0b0b0;
+            font-size: 12px;
+        }
+
+        .profile-header-badge {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+        }
+
+        .account-summary {
+            display: flex;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .summary-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .summary-total {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .summary-progress {
+            width: 100%;
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .summary-progress-bar {
+            width: 65%;
+            height: 100%;
+            background: linear-gradient(to right, #4CAF50, #81c784);
+        }
+
+        .summary-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .summary-consultations {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .summary-history {
+            color: #007bff;
+            font-size: 12px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .search-categories {
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .search-categories-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .search-categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .search-category-item {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+            padding: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .search-category-item:hover {
+            transform: scale(1.05);
+        }
+
+        .search-category-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        .search-category-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .search-category-details {
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-category-text {
+            display: flex;
+            flex-direction: column;
+            max-width: 120px;
+        }
+
+        .search-category-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .search-category-description {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .search-category-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-category-btn {
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-category-btn.nuevo {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .search-category-btn.online {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .search-category-btn.red-x {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .platform-description {
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .system-status-dashboard {
+           !important background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .system-status-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .system-status-card:hover {
+            transform: scale(1.05);
+        }
+
+        .system-status-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+        }
+
+        .system-status-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .system-status-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .system-status-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .system-status-subtitle {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .system-status-online {
+            color: #28a745;
+        }
+
+        .system-status-offline {
+            color: #dc3545;
+        }
+
+        .video-stream-container {
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-stream-container iframe {
+            max-width: 100%;
+            border-radius: 10px;
+            aspect-ratio: 16 / 9;
+        }
+
+        @media (max-width: 768px) {
+            .search-categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .system-status-dashboard {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .video-stream-container iframe {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .search-categories-grid {
+                grid-template-columns: 1fr;
+            }
+            .system-status-dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .search-category-text {
+                max-width: 100px;
+            }
+
+            .search-category-description {
+                font-size: 10px;
+            }
+        }
+
+        .pluto-tv-title {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .help-contact-section {
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .help-contact-text {
+            flex-grow: 1;
+            margin-right: 15px;
+        }
+
+        .help-contact-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .help-contact-description {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .help-contact-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .help-contact-button:hover {
+            background-color: #0056b3;
+        }
+        
+        .copyright-section {
+            text-align: center;
+            padding: 15px;
+            background-color: #f5f5f5;
+            color: #666;
+            font-size: 12px;
+        }
+
+        .menu-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu-modal-content {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .menu-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .menu-modal-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .menu-modal-close {
+            cursor: pointer;
+            font-size: 24px;
+            color: #888;
+        }
+
+        .menu-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-option:hover {
+            background-color: #f5f5f5;
+        }
+
+        .menu-option-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+        }
+
+        .menu-option-text {
+            flex-grow: 1;
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dark-mode body {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .dark-mode .content-container {
+            background-color: #1e1e1e;
+        }
+
+        .dark-mode .system-status-card {
+            background-color: #2a2a2a;
+        }
+
+        .profile-details-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-details-content {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .profile-details-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            border: 3px solid #007bff;
+        }
+
+        .profile-details-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-details-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .profile-details-info {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .profile-details-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .profile-details-label {
+            color: #666;
+        }
+
+        .profile-details-value {
+            font-weight: bold;
+        }
+
+        .profile-details-close {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-details-close:hover {
+            background-color: #0056b3;
+        }
+
+        .banner-image {
+            width: 90%;
+            max-width: 400px;
+            display: block;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-modal" id="menu-modal">
+        <div class="menu-modal-content">
+            <div class="menu-modal-header">
+                <div class="menu-modal-title">Menú</div>
+                <div class="menu-modal-close" id="close-menu-modal">&times;</div>
+            </div>
+            <div class="menu-option theme-toggle">
+                <div class="menu-option-text">Modo Oscuro</div>
+                <input type="checkbox" id="dark-mode-toggle">
+            </div>
+            <div class="menu-option" id="updates-option">
+                <svg class="menu-option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#007bff">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    <path d="M12 6v6l4.24 2.54 1.42-2.36-3.66-2.18V6z"/>
+                </svg>
+                <div class="menu-option-text">Actualizaciones</div>
+            </div>
+            <div class="menu-option" id="creator-info-option">
+                <svg class="menu-option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#28a745">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-1-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    <path d="M12 6v12l6-6z"/>
+                </svg>
+                <div class="menu-option-text">Información del Creador</div>
+            </div>
+            <div class="menu-option" id="new-features-option">
+                <svg class="menu-option-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dc3545">
+                    <path d="M20 8h-4c-1.1 0-2 .9-2 2v6h-2v-6H8v6h-2v-8c0-1.1.9-2 2-2h4V4h2v6h2v-2H8c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2z"/>
+                </svg>
+                <div class="menu-option-text">Nuevas Funciones</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-details-modal" id="profile-details-modal">
+        <div class="profile-details-content">
+            <div class="profile-details-image">
+                <img src="https://i.ibb.co/d0xj3PP/c9a933238ff4e23384fcfa44694e81e2.jpg" alt="Profile Picture">
+            </div>
+            <div class="profile-details-name">Sofia</div>
+            <div class="profile-details-info">
+                <div class="profile-details-row">
+                    <span class="profile-details-label">Saldo</span>
+                    <span class="profile-details-value">$68.0</span>
+                </div>
+                <div class="profile-details-row">
+                    <span class="profile-details-label">Estado</span>
+                    <span class="profile-details-value">VIP</span>
+                </div>
+                <div class="profile-details-row">
+                    <span class="profile-details-label">Tipo de Cuenta</span>
+                    <span class="profile-details-value">Personal</span>
+                </div>
+                <div class="profile-details-row">
+                    <span class="profile-details-label">Correo Electrónico</span>
+                    <span class="profile-details-value" id="profile-email">correo@ejemplo.com</span>
+                </div>
+            </div>
+            <button class="profile-details-close" id="close-profile-details">Cerrar</button>
+        </div>
+    </div>
+
+    <div class="top-banner">
+        <div class="banner-left">
+            <svg class="menu-icon" width="20" height="20" viewBox="0 0 24 24" fill="white">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+            <div class="logo">
+                <img src="https://i.ibb.co/5565Rwt/Black-and-White-Modern-Streetwear-Logo-Photoroom.png" alt="BO Logo">
+            </div>
+        </div>
+        <div class="banner-right">
+            <img src="https://img.icons8.com/?size=100&id=6478&format=png&color=FFFFFF" class="price-icon" alt="Price Icon" width="20" height="20">
+            <img src="https://img.icons8.com/?size=100&id=MA73a3e3raR9&format=png&color=FFFFFF" class="notification-icon" width="20" height="20" alt="Notification Icon">
+            <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" preserveAspectRatio="xMidYMid" class="chat-icon">
+                <defs>
+                    <linearGradient id="a" x1="50%" x2="50%" y1="0%" y2="100%">
+                        <stop offset="0%" stop-color="#2AABEE"/>
+                        <stop offset="100%" stop-color="#229ED9"/>
+                    </linearGradient>
+                </defs>
+                <path fill="url(#a)" d="M128 0C94.06 0 61.48 13.494 37.5 37.49A128.038 128.038 0 0 0 0 128c0 33.934 13.5 66.514 37.5 90.51C61.48 242.506 94.06 256 128 256s66.52-13.494 90.5-37.49c24-23.996 37.5-56.576 37.5-90.51 0-33.934-13.5-66.514-37.5-90.51C194.52 13.494 161.94 0 128 0Z"/>
+                <path fill="#FFF" d="M57.94 126.648c37.32-16.256 62.2-26.974 74.64-32.152 35.56-14.786 42.94-17.354 47.76-17.441 1.06-.017 3.42.245 4.96 1.49 1.28 1.05 1.64 2.47 1.82 3.467.16.996.38 3.266.2 5.038-1.92 20.24-10.26 69.356-14.5 92.026-1.78 9.592-5.32 12.808-8.74 13.122-7.44.684-13.08-4.912-20.28-9.63-11.26-7.386-17.62-11.982-28.56-19.188-12.64-8.328-4.44-12.906 2.76-20.386 1.88-1.958 34.64-31.748 35.26-34.45.08-.338.16-1.598-.6-2.262-.74-.666-1.84-.438-2.64-.258-1.14.256-19.12 12.152-54 35.686-5.1 3.508-9.72 5.218-13.88 5.128-4.56-.098-13.36-2.584-19.9-4.708-8-2.606-14.38-3.984-13.82-8.41.28-2.304 3.46-4.662 9.52-7.072Z"/>
+            </svg>
+            <div class="profile-pic">
+                <img src="https://i.ibb.co/d0xj3PP/c9a933238ff4e23384fcfa44694e81e2.jpg" alt="Profile Picture">
+            </div>
+        </div>
+    </div>
+
+    <img src="https://i.ibb.co/L05WmN5/Saturn-360.png" alt="Saturn360 Banner" class="banner-image">
+
+    <div class="content-container">
+        <div class="profile-header">
+            <div class="profile-header-image">
+                <img src="https://i.ibb.co/d0xj3PP/c9a933238ff4e23384fcfa44694e81e2.jpg" alt="Profile Picture">
+            </div>
+            <div class="profile-header-details">
+                <div class="profile-header-name">Sofia</div>
+                <div class="profile-header-plan">Plan: Premium</div>
+                <div class="profile-header-plan">Tipo de Cuenta: Personal</div>
+            </div>
+            <div class="profile-header-badge">Premium</div>
+        </div>
+
+        <div class="search-bar">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input type="text" placeholder="Buscar en Saturn360">
+        </div>
+
+        <div class="account-summary">
+            <div class="summary-left">
+                <div class="summary-total">Saldo Total: $68.0</div>
+                <div class="summary-progress">
+                    <div class="summary-progress-bar"></div>
+                </div>
+            </div>
+            <div class="summary-right">
+                <div class="summary-consultations">Consultas Realizadas: 196</div>
+                <div class="summary-history">Ver Historial</div>
+            </div>
+        </div>
+
+        <div class="credits-section">
+            <div class="credits-header">
+                <div class="credits-title">Comprar Créditos</div>
+                <div class="credits-info">
+                    <svg class="credits-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                    </svg>
+                    <span class="credits-amount">0 Créditos</span>
+                </div>
+            </div>
+            <div class="credits-action">
+                <div class="credits-description">
+                    Adquiere créditos para acceder a más funciones y servicios exclusivos.
+                </div>
+                <button class="credits-buy-btn">Comprar</button>
+            </div>
+        </div>
+
+        <div class="search-categories">
+            <div class="search-categories-title">Categorías de Búsqueda</div>
+            <div class="search-categories-grid">
+                <div class="search-category-item">
+                    <div class="search-category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#007bff">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                        </svg>
+                    </div>
+                    <div class="search-category-details">
+                        <div class="search-category-text">
+                            <div class="search-category-title">Prestamos</div>
+                            <div class="search-category-description">Prestamos de Dinero</div>
+                        </div>
+                        <div class="search-category-buttons">
+                            <button class="search-category-btn nuevo">Nuevo</button>
+                            <button class="search-category-btn online">Online</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-category-item">
+                    <div class="search-category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#28a745">
+                            <path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2zm0 6H8V7h11v14z"/>
+                        </svg>
+                    </div>
+                    <div class="search-category-details">
+                        <div class="search-category-text">
+                            <div class="search-category-title">Telefonos</div>
+                            <div class="search-category-description">Visualización de datos</div>
+                        </div>
+                        <div class="search-category-buttons">
+                            <button class="search-category-btn nuovo">Nuevo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-category-item">
+                    <div class="search-category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dc3545">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-1-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </div>
+                    <div class="search-category-details">
+                        <div class="search-category-text">
+                            <div class="search-category-title">Modificación Reniec</div>
+                            <div class="search-category-description">Modificación de Datos en Tiempo Real</div>
+                        </div>
+                        <div class="search-category-buttons">
+                            <button class="search-category-btn nuevo">Nuevo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-category-item">
+                    <div class="search-category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#6f42c1">
+                            <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s-0.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                    </svg>
+                    </div>
+                    <div class="search-category-details">
+                        <div class="search-category-text">
+                            <div class="search-category-title">Modificación de Calificativo</div>
+                            <div class="search-category-description">Universidades & Institutos</div>
+                        </div>
+                        <div class="search-category-buttons">
+                            <button class="search-category-btn red-x">X</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-category-item">
+                    <div class="search-category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#17a2b8">
+                            <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s-0.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                    </svg>
+                    </div>
+                    <div class="search-category-details">
+                        <div class="search-category-text">
+                            <div class="search-category-title">Justicia</div>
+                            <div class="search-category-description">Busqueda Judicial</div>
+                        </div>
+                        <div class="search-category-buttons">
+                            <button class="search-category-btn nuevo">Nuevo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-category-item">
+                    <div class="search-category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffc107">
+                            <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s-0.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                    </svg>
+                    </div>
+                    <div class="search-category-details">
+                        <div class="search-category-text">
+                            <div class="search-category-title">Doxing</div>
+                            <div class="search-category-description">Doxing </div>
+                        </div>
+                        <div class="search-category-buttons">
+                            <button class="search-category-btn nuevo">Nuevo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-category-item">
+                    <div class="search-category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#28a745">
+                            <path d="M21 10H7V7h14v3zm0 3H7v3h14v-3zM3 5h2v14H3z"/>
+                    </svg>
+                    </div>
+                    <div class="search-category-details">
+                        <div class="search-category-text">
+                            <div class="search-category-title">Streaming</div>
+                            <div class="search-category-description">Cuentas</div>
+                        </div>
+                        <div class="search-category-buttons">
+                            <button class="search-category-btn nuevo">Nuevo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-category-item">
+                    <div class="search-category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#6f42c1">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-1-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </div>
+                    <div class="search-category-details">
+                        <div class="search-category-text">
+                            <div class="search-category-title">Canva</div>
+                            <div class="search-category-description">Cuentas Premiun</div>
+                        </div>
+                        <div class="search-category-buttons">
+                            <button class="search-category-btn nuevo">Nuevo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="platform-description">
+            Descubre la información que necesitas con nuestra amplia gama de consultas. Desde personas, vehículos y envíos hasta telefonía, justicia y finanzas y mucho mas, nuestra plataforma Saturn360 te brinda acceso rápido y eficiente a los datos relevantes para tomar decisiones informadas y simplificar tu vida cotidiana.
+        </div>
+
+        <div class="system-status-dashboard">
+            <div class="system-status-card">
+                <div class="system-status-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#007bff">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        <path d="M12 6v6l4.24 2.54 1.42-2.36-3.66-2.18V6z"/>
+                    </svg>
+                </div>
+                <div class="system-status-title">Tiempo de Respuesta</div>
+                <div class="system-status-value">0.37s</div>
+                <div class="system-status-subtitle">Rendimiento de Sistema</div>
+            </div>
+            <div class="system-status-card">
+                <div class="system-status-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#28a745">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-1-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        <path d="M12 6v12l6-6z"/>
+                    </svg>
+                </div>
+                <div class="system-status-title">Usuarios Activos</div>
+                <div class="system-status-value">336</div>
+                <div class="system-status-subtitle">Conexiones Simultáneas</div>
+            </div>
+            <div class="system-status-card">
+                <div class="system-status-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#17a2b8">
+                        <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s-0.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                    </svg>
+                </div>
+                <div class="system-status-title">Estado de Servicios</div>
+                <div class="system-status-value system-status-online">Online</div>
+                <div class="system-status-subtitle">API, DB, Cache</div>
+            </div>
+        </div>
+
+        <div class="pluto-tv-title">
+            <h2>¡Diviértete! Gracias a Pluto TV</h2>
+        </div>
+
+        <div class="video-stream-container">
+            <iframe src="https://pluto.tv/latam/live-tv/6047fabfce6e8e00070bcc9f" width="800" height="450" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="help-contact-section">
+            <div class="help-contact-text">
+                <div class="help-contact-title">Necesitas ayuda</div>
+                <div class="help-contact-description">Contáctame para resolver cualquier duda o problema que tengas</div>
+            </div>
+            <button class="help-contact-button">Contactar</button>
+        </div>
+
+        <div class="copyright-section">
+            Copyright 2025 Consultas Términos y Condiciones
+        </div>
+
+    </div>
+
+    <script>
+        document.querySelectorAll('.search-filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.search-filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        const menuIcon = document.querySelector('.menu-icon');
+        const menuModal = document.getElementById('menu-modal');
+        const closeMenuModal = document.getElementById('close-menu-modal');
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+        menuIcon.addEventListener('click', () => {
+            menuModal.style.display = 'flex';
+        });
+
+        closeMenuModal.addEventListener('click', () => {
+            menuModal.style.display = 'none';
+        });
+
+        menuModal.addEventListener('click', (event) => {
+            if (event.target === menuModal) {
+                menuModal.style.display = 'none';
+            }
+        });
+
+        // Dark mode toggle
+        darkModeToggle.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Option click handlers
+        document.getElementById('updates-option').addEventListener('click', () => {
+            alert('Actualizaciones recientes:\n- Mejora de diseño\n- Nuevas categorías de búsqueda\n- Optimización de rendimiento');
+        });
+
+        document.getElementById('creator-info-option').addEventListener('click', () => {
+            alert('Creado por: Equipo de Desarrollo Saturn360\nContacto: soporte@saturn360.com\nVersión: 1.2.5');
+        });
+
+        document.getElementById('new-features-option').addEventListener('click', () => {
+            alert('Nuevas funciones:\n- Modo oscuro\n- Menú de configuración\n- Mejora en búsquedas\n- Transmisión en vivo');
+        });
+
+        document.querySelector('.contact-option:last-child').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+
+        const profilePic = document.querySelector('.profile-pic');
+        const profileDetailsModal = document.getElementById('profile-details-modal');
+        const closeProfileDetails = document.getElementById('close-profile-details');
+
+        profilePic.addEventListener('click', () => {
+            profileDetailsModal.style.display = 'flex';
+        });
+
+        closeProfileDetails.addEventListener('click', () => {
+            profileDetailsModal.style.display = 'none';
+        });
+
+        profileDetailsModal.addEventListener('click', (event) => {
+            if (event.target === profileDetailsModal) {
+                profileDetailsModal.style.display = 'none';
+            }
+        });
+
+        // Dynamic system status updates
+        function updateSystemStatus() {
+            const timeResponseElement = document.querySelector('.system-status-card:first-child .system-status-value');
+            const activeUsersElement = document.querySelector('.system-status-card:nth-child(2) .system-status-value');
+
+            function randomBetween(min, max) {
+                return (Math.random() * (max - min) + min).toFixed(2);
+            }
+
+            function randomIntBetween(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            setInterval(() => {
+                // Update time response between 0.9 and 4
+                timeResponseElement.textContent = randomBetween(0.9, 4) + 's';
+
+                // Update active users between 2 and 368
+                activeUsersElement.textContent = randomIntBetween(2, 368);
+            }, 3000);
+        }
+
+        // Initialize dynamic updates when DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', updateSystemStatus);
+    </script>
+</body>
+</html>
